@@ -1,0 +1,79 @@
+<html>
+<body>
+	<div id='background'>
+        <div id='character' style='position:absolute; top:100px; left:450px; background-image: url("img/down1.png"); width:59px; height:86px;'></div>
+    </div>
+    <script type="text/javascript">
+
+    var leftValue = 450, topValue = 100;
+
+    function update() {
+            document.getElementById("character").style.top = topValue+"px";
+            document.getElementById("character").style.left = leftValue+"px";
+            console.log("L: "+leftValue + " " + "T: " +topValue)
+        
+    }
+    
+    // document.onkeydown 은 키보드 자판을 눌렀을 때 브라우저에서 인식하는 모든 요소와 정보값을 보여주도록 하는 기능이다. 
+    document.onkeydown = function(e) {
+        
+        if ((leftValue > 0 && leftValue <500) && (topValue > 0 && topValue <500)){
+        // console.log(e);
+            if (e.keyCode == 40 ) { //down
+             topValue = topValue + 10;
+        //document.getElementById("character").style.top = topValue+"px"; // style 안에 있는 element 'top'의 값을 교체해준다. 
+            }
+            else if(e.keyCode == 39) { //right
+                leftValue = leftValue + 10;
+        //document.getElementById("character").style.left = leftValue+"px";
+
+             }
+
+            else if(e.keyCode == 37) { // left
+                 leftValue = leftValue - 10;
+            //document.getElementById("character").style.left = leftValue+"px";
+
+            }
+
+            else if(e.keyCode == 38) { //up
+                topValue = topValue - 10;
+            //document.getElementById("character").style.top = topValue+"px";
+
+            }
+            update();
+        }
+        else if((leftValue < 10 || leftValue > 490) || (topValue < 10 || topValue > 490)){
+            
+            console.log("You can't go further!");
+
+            if (e.keyCode == 40 ) { //down
+                topValue = topValue -10;
+                
+            }
+
+            else if(e.keyCode == 39) { //right
+                
+                leftValue = leftValue -10;
+            }
+
+            else if(e.keyCode == 37) { // left
+                
+                leftValue = leftValue +10;
+           
+            }
+
+            else if(e.keyCode == 38) { //up
+                topValue = topValue +10;
+                
+            }
+        
+            update();   
+        }
+        
+
+    }
+    
+    </script>
+
+</body>
+</html>

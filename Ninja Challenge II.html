@@ -1,0 +1,194 @@
+<html>
+<body>
+	<div id='background'>
+        <div id='character' style='position:absolute; top:100px; left:450px; background-image: url("img/down1.png"); width:59px; height:86px;'></div>
+    </div>
+    <script type="text/javascript">
+
+    var leftValue = 450, topValue = 100; walkValue = '1';
+
+    function update() {
+            document.getElementById("character").style.top = topValue+"px";
+            document.getElementById("character").style.left = leftValue+"px";
+            console.log("L: "+leftValue + " " + "T: " +topValue)
+        
+    }
+    
+    document.onkeydown = function(e) {
+       
+
+        if ((leftValue > 0 && leftValue <500) && (topValue > 0 && topValue <500)){         
+            if (walkValue == 1) {
+                walkValue = 2;
+            }
+            else if (walkValue == 2) {
+                walkValue = 1;
+            }        
+            
+            if (e.keyCode == 40) { //down
+                topValue = topValue + 10;
+                document.getElementById("character").style.backgroundImage = "url('img/down" + walkValue + ".png')";
+         
+            }
+            else if(e.keyCode == 39) { //right
+                leftValue = leftValue + 10;
+                document.getElementById("character").style.backgroundImage = "url('img/right" + walkValue + ".png')";
+        
+            }
+
+            else if(e.keyCode == 37) { // left
+                leftValue = leftValue - 10;
+                document.getElementById("character").style.backgroundImage = "url('img/left" + walkValue + ".png')";
+
+            }
+
+            else if(e.keyCode == 38) { //up
+                topValue = topValue - 10;
+                document.getElementById("character").style.backgroundImage = "url('img/top" + walkValue + ".png')";
+
+            }
+            update();
+        }
+        
+        else if(topValue > 490){            
+            if (walkValue == 1) {
+                walkValue = 2;
+            }
+            else if (walkValue == 2) {
+                walkValue = 1;
+            }                   
+            
+            if (e.keyCode == 40) { //down
+                
+                document.getElementById("character").style.backgroundImage = "url('img/down" + walkValue + ".png')";
+         
+            }
+            else if(e.keyCode == 39 && leftValue < 500) { //right, handles at the right-bottom corner.
+                leftValue = leftValue + 10;
+                document.getElementById("character").style.backgroundImage = "url('img/right" + walkValue + ".png')";
+        
+            }
+
+            else if(e.keyCode == 37 && leftValue > 0) { // left, handles at the left-bottom corner.
+                leftValue = leftValue - 10;
+                document.getElementById("character").style.backgroundImage = "url('img/left" + walkValue + ".png')";
+
+            }
+
+            else if(e.keyCode == 38) { //up
+                topValue = topValue - 10;
+                document.getElementById("character").style.backgroundImage = "url('img/top" + walkValue + ".png')";
+
+            }
+            update();  
+            
+        }
+        
+        else if(leftValue > 490){
+         
+            if (walkValue == 1) {
+                walkValue = 2;
+            }
+            else if (walkValue == 2) {
+                walkValue = 1;
+            }                   
+            
+            if (e.keyCode == 40) { //down
+                topValue = topValue + 10;
+                document.getElementById("character").style.backgroundImage = "url('img/down" + walkValue + ".png')";
+         
+            }
+            else if(e.keyCode == 39) { //right
+                
+                document.getElementById("character").style.backgroundImage = "url('img/right" + walkValue + ".png')";
+        
+            }
+
+            else if(e.keyCode == 37) { // left
+                leftValue = leftValue - 10;
+                document.getElementById("character").style.backgroundImage = "url('img/left" + walkValue + ".png')";
+
+            }
+
+            else if(e.keyCode == 38 && topValue > 0) { //up, handles at the top-right corner
+                topValue = topValue - 10;
+                document.getElementById("character").style.backgroundImage = "url('img/top" + walkValue + ".png')";
+
+            }
+            update();  
+        }
+            
+        else if(leftValue < 10){             
+
+            if (walkValue == 1) {
+                walkValue = 2;
+            }
+            else if (walkValue == 2) {
+                walkValue = 1;
+            }                   
+            
+            if (e.keyCode == 40) { //down
+                topValue = topValue + 10;
+                document.getElementById("character").style.backgroundImage = "url('img/down" + walkValue + ".png')";
+         
+            }
+            else if(e.keyCode == 39) { //right
+                leftValue = leftValue +10;
+                document.getElementById("character").style.backgroundImage = "url('img/right" + walkValue + ".png')";
+        
+            }
+
+            else if(e.keyCode == 37) { // left
+                
+                document.getElementById("character").style.backgroundImage = "url('img/left" + walkValue + ".png')";
+
+            }
+
+            else if(e.keyCode == 38 && topValue > 0) { //up, handles at the left top corner.
+                topValue = topValue - 10;
+                document.getElementById("character").style.backgroundImage = "url('img/top" + walkValue + ".png')";
+
+            }       
+            update();   
+        }
+
+        else if(topValue < 10){
+         
+            if (walkValue == 1) {
+                walkValue = 2;
+            }
+            else if (walkValue == 2) {
+                walkValue = 1;
+            }                   
+            
+            if (e.keyCode == 40) { //down
+                topValue = topValue + 10;
+                document.getElementById("character").style.backgroundImage = "url('img/down" + walkValue + ".png')";
+         
+            }
+            else if(e.keyCode == 39) { //right
+                leftValue = leftValue + 10;
+                document.getElementById("character").style.backgroundImage = "url('img/right" + walkValue + ".png')";
+        
+            }
+
+            else if(e.keyCode == 37 && leftValue > 0) { // left, handles at the left-top corner.
+                leftValue = leftValue - 10;
+                document.getElementById("character").style.backgroundImage = "url('img/left" + walkValue + ".png')";
+
+            }
+
+            else if(e.keyCode == 38) { //up
+                
+                document.getElementById("character").style.backgroundImage = "url('img/top" + walkValue + ".png')";
+
+            }
+            update();
+        }
+
+    }
+    
+    </script>
+
+</body>
+</html>
